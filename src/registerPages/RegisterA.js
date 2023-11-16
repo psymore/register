@@ -1,9 +1,42 @@
-import { Button, Grid, Typography } from "@mui/material";
+import { Button, Grid, TextField, Typography } from "@mui/material";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { mobileBackground, mobileRectangle } from "../images";
 import { SignUpTextfield } from "./LoginA";
 import "./LoginA.css";
+import axios from "axios";
 
 export default function RegisterA() {
+  const [email, setEmail] = useState("");
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+
+  const handleRegister = () => {
+    console.log(
+      "Registering with email:",
+      email,
+      "username:",
+      username,
+      "password:",
+      password
+    );
+
+    axios
+      .post("http://localhost:8080/api/auth/signup", {
+        email: email,
+        username: username,
+        password: password,
+      })
+      .then(response => {
+        console.log("Registration successful:", response.data);
+      })
+      .catch(error => {
+        console.error("Registration failed:", error.response.data);
+      });
+  };
+
+  const navigate = useNavigate();
+
   return (
     <Grid
       container
@@ -76,7 +109,8 @@ export default function RegisterA() {
                 ml: "18px",
                 color: "#779341",
                 cursor: "pointer",
-              }}>
+              }}
+              onClick={() => navigate("/login")}>
               Sign in
             </Typography>
           </Grid>
@@ -88,18 +122,53 @@ export default function RegisterA() {
             display: "flex",
             position: "absolute",
             mt: "70%",
-            border: "1px solid",
           }}>
-          <SignUpTextfield text={"Enter your Username or Email Address"} />
+          <SignUpTextfield
+            text={"Enter your Email Address"}
+            value={email}
+            onChange={e => setEmail(e.target.value)}
+          />
 
           <Grid item xs={5} ml={"8.6%"}>
-            <SignUpTextfield text={"Username"} mt={"33px"} />
+            <Grid
+              item
+              xs={12}
+              sx={{
+                ml: "15%",
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "center",
+                alignItems: "flex-start",
+                mt: "33px",
+              }}>
+              <Typography fontSize={"14px"} color={"#000000"}>
+                Enter your Username
+              </Typography>
+              <TextField
+                autoFocus
+                sx={{
+                  backgroundColor: "white",
+                  borderRadius: "9px",
+                  mt: "16px",
+                  width: "85%",
+                  display: "flex",
+                  flexDirection: "left",
+                }}
+                value={username}
+                onChange={e => setUsername(e.target.value)}
+              />
+            </Grid>
           </Grid>
           <Grid item xs={5} mr={"26px"}>
             <SignUpTextfield text={"Contact Number"} mt={"33px"} ml={0} />
           </Grid>
 
-          <SignUpTextfield text={"Enter your Password"} mt={"33px"} />
+          <SignUpTextfield
+            text={"Enter your Password"}
+            mt={"33px"}
+            value={password}
+            onChange={e => setPassword(e.target.value)}
+          />
 
           <Grid
             item
@@ -138,7 +207,8 @@ export default function RegisterA() {
                   backgroundColor: "#E9F1FF",
                   boxShadow: "none",
                 },
-              }}>
+              }}
+              onClick={handleRegister}>
               <Typography sx={{ color: "#fff", fontSize: "16px" }}>
                 Sign up
               </Typography>

@@ -6,8 +6,11 @@ import {
   mobileRectangle,
 } from "../images";
 import "./LoginA.css";
+import { useNavigate } from "react-router-dom";
+import { useState } from "react";
+import axios from "axios";
 
-export const SignUpTextfield = ({ text, mt, ml, width }) => {
+export const SignUpTextfield = ({ text, mt, ml, width, value, onChange }) => {
   return (
     <Grid
       item
@@ -33,12 +36,34 @@ export const SignUpTextfield = ({ text, mt, ml, width }) => {
           display: "flex",
           flexDirection: "left",
         }}
+        value={value}
+        onChange={onChange}
       />
     </Grid>
   );
 };
 
 export default function LoginA() {
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+
+  const handleLogin = () => {
+    axios
+      .post("http://localhost:8080/api/auth/signin", {
+        username: username,
+        password: password,
+      })
+      .then(response => {
+        console.log("Login successful.");
+        navigate("/home");
+      })
+      .catch(error => {
+        console.error("Login failed:", error.response.data);
+      });
+  };
+
+  const navigate = useNavigate();
+
   return (
     <Grid
       container
@@ -110,7 +135,8 @@ export default function LoginA() {
                 ml: "18px",
                 color: "#779341",
                 cursor: "pointer",
-              }}>
+              }}
+              onClick={() => navigate("/register")}>
               Sign up
             </Typography>
           </Grid>
@@ -192,8 +218,17 @@ export default function LoginA() {
         </Grid>
 
         <Grid container sx={{ position: "absolute", mt: "100%" }}>
-          <SignUpTextfield text={"Enter your Username or Email Address"} />
-          <SignUpTextfield text={"Enter your Password"} mt={"36px"} />
+          <SignUpTextfield
+            text={"Enter your Username or Email Address"}
+            value={username}
+            onChange={e => setUsername(e.target.value)}
+          />
+          <SignUpTextfield
+            text={"Enter your Password"}
+            mt={"36px"}
+            value={password}
+            onChange={e => setPassword(e.target.value)}
+          />
 
           <Grid
             item
@@ -232,7 +267,8 @@ export default function LoginA() {
                   backgroundColor: "#E9F1FF",
                   boxShadow: "none",
                 },
-              }}>
+              }}
+              onClick={handleLogin}>
               <Typography sx={{ color: "#fff", fontSize: "16px" }}>
                 Sign in
               </Typography>
