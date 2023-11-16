@@ -3,6 +3,8 @@ import { Route, Routes } from "react-router-dom";
 import "./App.css";
 import LoginA from "./registerPages/LoginA";
 import RegisterA from "./registerPages/RegisterA";
+import Home from "./home/Home";
+import Landing from "./Landing";
 
 const theme = createTheme({
   components: {
@@ -21,8 +23,10 @@ function App() {
     <div className="App">
       <ThemeProvider theme={theme}>
         <Routes>
+          <Route path="/" element={<Landing />}></Route>
           <Route path="/login" element={<LoginA />}></Route>
           <Route path="/register" element={<RegisterA />}></Route>
+          <Route path="/home" element={<Home />}></Route>
         </Routes>
       </ThemeProvider>
     </div>

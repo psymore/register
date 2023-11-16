@@ -3,6 +3,10 @@ export {
   ReactComponent as MobileBackground,
 } from "./background-a-mobile.svg";
 export {
+  default as desktopBackground,
+  ReactComponent as DesktopBackground,
+} from "./background-a-desktop.svg";
+export {
   default as mobileRectangle,
   ReactComponent as MobileRectangle,
 } from "./mobile-rectangle.svg";
