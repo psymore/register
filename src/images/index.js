@@ -11,6 +11,10 @@ export {
   ReactComponent as MobileRectangle,
 } from "./mobile-rectangle.svg";
 export {
+  default as desktopRectangle,
+  ReactComponent as DesktopRectangle,
+} from "./desktop-rectangle.svg";
+export {
   default as loginGoogle,
   ReactComponent as LoginGoogle,
 } from "./login-google.svg";

@@ -1,15 +1,28 @@
-import { Button, Grid, TextField, Typography } from "@mui/material";
+import {
+  Button,
+  Grid,
+  TextField,
+  Typography,
+  useMediaQuery,
+} from "@mui/material";
+import { useTheme } from "@mui/material/styles";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { mobileBackground, mobileRectangle } from "../images";
+import { desktopRectangle, mobileRectangle } from "../images";
 import { SignUpTextfield } from "./LoginA";
-import "./LoginA.css";
+
 import axios from "axios";
+import "./LoginA.css";
 
 export default function RegisterA() {
   const [email, setEmail] = useState("");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+
+  const navigate = useNavigate();
+
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
 
   const handleRegister = () => {
     console.log(
@@ -35,8 +48,6 @@ export default function RegisterA() {
       });
   };
 
-  const navigate = useNavigate();
-
   return (
     <Grid
       container
@@ -46,33 +57,38 @@ export default function RegisterA() {
         justifyContent: "center",
         alignItems: "center",
       }}>
-      <Grid container>
-        <Grid item xs={12}>
-          <img
-            className="image1"
-            src={mobileBackground}
-            alt="A interior has an armchair on empty white wall background for mobile view."
-          />
-          <img
-            className="image2"
-            src={mobileRectangle}
-            alt="A transparent background for mobile view."
-          />
-        </Grid>
-
+      <Grid
+        container // whole components besides background image
+      >
+        <img
+          className="image2"
+          src={isMobile ? mobileRectangle : desktopRectangle}
+          alt={"A transparent background for mobile view."}
+        />
         <Grid
           container
+          item
+          xs={12}
+          sm={12}
+          md={6}
+          lg={5}
+          xl={4.5}
           sx={{
             position: "absolute",
             mt: "122px",
+            ml: 0,
+            "@media(min-width:900px)": {
+              ml: "50%",
+            },
           }}>
           <Grid
             item
-            xs={7}
+            xs={6}
             sx={{
               display: "flex",
               flexDirection: "column",
               alignItems: "flex-start",
+              ml: "6%",
             }}>
             <Typography
               sx={{
@@ -81,13 +97,21 @@ export default function RegisterA() {
               }}>
               Welcome to LOREM
             </Typography>
-            <Typography sx={{ ml: "53px", fontSize: "40px", mt: "13px" }}>
+            <Typography
+              sx={{
+                ml: "53px",
+                fontSize: "40px",
+                "@media (max-width: 440px)": {
+                  fontSize: "30px",
+                },
+                mt: "13px",
+              }}>
               Sign up
             </Typography>
           </Grid>
           <Grid
             item
-            xs={5}
+            xs={4}
             sx={{
               display: "flex",
               flexDirection: "column",
@@ -118,10 +142,36 @@ export default function RegisterA() {
 
         <Grid
           container
+          item
+          xs={12}
+          sm={10}
+          md={6}
+          lg={5}
+          xl={4.5}
           sx={{
             display: "flex",
             position: "absolute",
+
             mt: "70%",
+
+            "@media (max-width: 600px)": {
+              mt: "70%",
+            },
+
+            "@media (min-width: 601px) and (max-width: 900px)": {
+              mt: "40%",
+            },
+
+            "@media(min-width:901px)": {
+              mt: "25%",
+              ml: "50%",
+            },
+            "@media(min-width:1200px)": {
+              mt: "20%",
+            },
+            "@media(min-width:1400px)": {
+              mt: "18%",
+            },
           }}>
           <SignUpTextfield
             text={"Enter your Email Address"}
@@ -142,7 +192,7 @@ export default function RegisterA() {
                 mt: "33px",
               }}>
               <Typography fontSize={"14px"} color={"#000000"}>
-                Enter your Username
+                Username
               </Typography>
               <TextField
                 autoFocus
@@ -182,6 +232,14 @@ export default function RegisterA() {
                 mt: "12px",
                 fontSize: "11px",
                 mr: "60px",
+
+                "@media (min-width: 700px) and (max-width: 900px)": {
+                  mr: "90px",
+                },
+
+                "@media(min-width:900px)": {
+                  mr: "80px",
+                },
                 color: "#4285F4",
                 cursor: "pointer",
               }}>
@@ -194,13 +252,25 @@ export default function RegisterA() {
             sx={{
               display: "flex",
               justifyContent: "flex-end",
+
+              "@media(min-width:900px)": {
+                mr: "20px",
+              },
             }}>
             <Button
               variant="contained"
               sx={{
-                width: "149px",
+                "@media(min-width:901px)": {
+                  width: "236px",
+                },
+                "@media(max-width:900px)": {
+                  width: "149px",
+                },
                 height: "54px",
                 mr: "50px",
+                "@media (min-width: 700px) and (max-width: 900px)": {
+                  mr: "90px",
+                },
                 mt: "47px",
                 backgroundColor: "#779341",
                 ":hover": {
@@ -215,13 +285,6 @@ export default function RegisterA() {
             </Button>
           </Grid>
         </Grid>
-
-        <Grid
-          container
-          sx={{
-            position: "absolute",
-            mt: "622px",
-          }}></Grid>
       </Grid>
     </Grid>
   );

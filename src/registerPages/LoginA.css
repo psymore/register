@@ -1,13 +1,29 @@
-.parent {
-  position: relative;
-  top: 0;
-  left: 0;
+body {
+  background-image: url("../images/background-a-desktop.svg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100vh;
+  background-position: center;
 }
 
-.image1 {
-  position: relative;
-  top: 0;
-  left: 0;
+@media (max-width: 900px) {
+  body {
+    background-image: url("../images/background-a-mobile.svg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+    background-position: center;
+  }
+}
+
+@media (min-width: 901px) {
+  body {
+    background-image: url("../images/background-a-desktop.svg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+    background-position: center;
+  }
 }
 
 .image2 {
@@ -16,13 +32,37 @@
   right: 23px;
 }
 
-@media only screen and (max-width: 700px) {
+@media only screen and (max-width: 900px) {
   .image2 {
     top: 71px;
   }
 }
-@media only screen and (min-width: 701px) {
+@media only screen and (min-width: 901px) {
   .image2 {
+    position: relative;
     top: 80px;
+    height: 741px;
+    width: 539px;
+  }
+}
+
+.image2 {
+  margin-left: 0;
+
+  @media (max-width: 600px) {
+    margin-left: 0;
+  }
+  @media (min-width: 601px) {
+    margin-left: 5%;
+  }
+  @media (min-width: 650px) and (max-width: 900px) {
+    /* margin-left: 8%; */
+    margin-left: 8%;
+  }
+  @media (min-width: 901px) {
+    margin-left: 52%;
+  }
+  @media (min-width: 1800px) {
+    display: none;
   }
 }
