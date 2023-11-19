@@ -77,7 +77,10 @@ export default function RegisterA() {
             position: "absolute",
             mt: "122px",
             ml: 0,
-            "@media(min-width:900px)": {
+            "@media(max-width:900px)": {
+              ml: "5%",
+            },
+            "@media(min-width:901px)": {
               ml: "50%",
             },
           }}>
@@ -94,6 +97,9 @@ export default function RegisterA() {
               sx={{
                 fontSize: "16px",
                 ml: "53px",
+                "@media (max-width: 440px)": {
+                  ml: "30px",
+                },
               }}>
               Welcome to LOREM
             </Typography>
@@ -103,6 +109,7 @@ export default function RegisterA() {
                 fontSize: "40px",
                 "@media (max-width: 440px)": {
                   fontSize: "30px",
+                  ml: "30px",
                 },
                 mt: "13px",
               }}>
@@ -111,7 +118,7 @@ export default function RegisterA() {
           </Grid>
           <Grid
             item
-            xs={4}
+            xs={4.4}
             sx={{
               display: "flex",
               flexDirection: "column",
@@ -160,17 +167,18 @@ export default function RegisterA() {
 
             "@media (min-width: 601px) and (max-width: 900px)": {
               mt: "40%",
+              ml: "7%",
             },
 
-            "@media(min-width:901px)": {
-              mt: "25%",
+            "@media(min-width: 901px)": {
+              mt: "15%",
               ml: "50%",
             },
-            "@media(min-width:1200px)": {
+            "@media(min-width: 1200px)": {
               mt: "20%",
             },
-            "@media(min-width:1400px)": {
-              mt: "18%",
+            "@media(min-width: 1400px)": {
+              mt: "15%",
             },
           }}>
           <SignUpTextfield
@@ -262,6 +270,7 @@ export default function RegisterA() {
               sx={{
                 "@media(min-width:901px)": {
                   width: "236px",
+                  mr: "10%",
                 },
                 "@media(max-width:900px)": {
                   width: "149px",
