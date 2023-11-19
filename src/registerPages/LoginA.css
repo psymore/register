@@ -4,6 +4,7 @@ body {
   background-size: cover;
   height: 100vh;
   background-position: center;
+  overflow: hidden;
 }
 
 @media (max-width: 900px) {
@@ -30,6 +31,7 @@ body {
   position: absolute;
   left: 26px;
   right: 23px;
+  height: 741px;
 }
 
 @media only screen and (max-width: 900px) {
@@ -41,7 +43,6 @@ body {
   .image2 {
     position: relative;
     top: 80px;
-    height: 741px;
     width: 539px;
   }
 }
@@ -56,11 +57,12 @@ body {
     margin-left: 5%;
   }
   @media (min-width: 650px) and (max-width: 900px) {
-    /* margin-left: 8%; */
-    margin-left: 8%;
+    margin-left: 13%;
   }
   @media (min-width: 901px) {
     margin-left: 52%;
+    top: 50px;
+    height: 720px;
   }
   @media (min-width: 1800px) {
     display: none;
