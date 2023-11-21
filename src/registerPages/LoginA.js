@@ -1,14 +1,23 @@
-import { Box, Button, Grid, TextField, Typography } from "@mui/material";
+import {
+  Box,
+  Button,
+  Grid,
+  TextField,
+  Typography,
+  useMediaQuery,
+} from "@mui/material";
+
 import {
   LoginFacebook,
   LoginGoogle,
-  mobileBackground,
+  desktopRectangle,
   mobileRectangle,
 } from "../images";
 import "./LoginA.css";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import axios from "axios";
+import { theme } from "../utils/customThemeBreakpoints";
 
 export const SignUpTextfield = ({ text, mt, ml, width, value, onChange }) => {
   return (
@@ -64,6 +73,8 @@ export default function LoginA() {
 
   const navigate = useNavigate();
 
+  const isMobile = useMediaQuery(theme.breakpoints.down("xs"));
+
   return (
     <Grid
       container
@@ -73,48 +84,69 @@ export default function LoginA() {
         justifyContent: "center",
         alignItems: "center",
       }}>
-      <Grid container>
-        <Grid item xs={12}>
-          <img
-            className="image1"
-            src={mobileBackground}
-            alt="A interior has an armchair on empty white wall background for mobile view."
-          />
-          <img
-            className="image2"
-            src={mobileRectangle}
-            alt="A transparent background for mobile view."
-          />
-        </Grid>
+      <Grid
+        container // whole components besides background image
+      >
+        <img
+          className="image2"
+          src={isMobile ? mobileRectangle : desktopRectangle}
+          alt={"A transparent background."}
+        />
 
         <Grid
           container
+          item
+          xs={12}
+          sm={11}
+          md={6}
+          lg={5}
+          xl={4.5}
           sx={{
             position: "absolute",
             mt: "122px",
+            ml: 0,
+            "@media(max-width:900px)": {
+              ml: "8%",
+            },
+            "@media(min-width:901px)": {
+              ml: "50%",
+            },
           }}>
           <Grid
             item
-            xs={7}
+            xs={6}
             sx={{
               display: "flex",
               flexDirection: "column",
               alignItems: "flex-start",
+              ml: "6%",
             }}>
             <Typography
               sx={{
                 fontSize: "16px",
                 ml: "53px",
+                "@media (max-width: 440px)": {
+                  ml: "30px",
+                },
               }}>
               Welcome to LOREM
             </Typography>
-            <Typography sx={{ ml: "53px", fontSize: "40px", mt: "13px" }}>
+            <Typography
+              sx={{
+                ml: "53px",
+                fontSize: "40px",
+                "@media (max-width: 440px)": {
+                  fontSize: "30px",
+                  ml: "30px",
+                },
+                mt: "13px",
+              }}>
               Sign in
             </Typography>
           </Grid>
           <Grid
             item
-            xs={5}
+            xs={4.4}
             sx={{
               display: "flex",
               flexDirection: "column",
@@ -125,6 +157,7 @@ export default function LoginA() {
                 textAlign: "left",
                 fontSize: "16px",
                 ml: "18px",
+                mr: "38px",
               }}>
               No Account ?
             </Typography>
@@ -142,7 +175,36 @@ export default function LoginA() {
           </Grid>
         </Grid>
 
-        <Grid container sx={{ position: "absolute", mt: "281px" }}>
+        <Grid
+          container
+          item
+          xs={12}
+          sm={10}
+          md={6.5}
+          lg={5}
+          xl={4.5}
+          sx={{
+            display: "flex",
+            position: "absolute",
+            mt: "281px",
+
+            "@media (min-width: 430px) and (max-width: 600px)": {},
+
+            "@media (min-width: 601px) and (max-width: 900px)": {
+              ml: "7%",
+            },
+
+            "@media(min-width: 901px)": {
+              mt: "25%",
+              ml: "50%",
+            },
+            "@media(min-width: 1200px)": {
+              mt: "20%",
+            },
+            "@media(min-width: 1400px)": {
+              mt: "15%",
+            },
+          }}>
           <Grid
             item
             xs={7}
@@ -217,7 +279,33 @@ export default function LoginA() {
           <Grid item xs={2.5} sx={{}}></Grid>
         </Grid>
 
-        <Grid container sx={{ position: "absolute", mt: "100%" }}>
+        <Grid
+          container
+          item
+          xs={12}
+          sm={11}
+          md={6}
+          lg={5}
+          xl={4.5}
+          sx={{
+            position: "absolute",
+            mt: "386px",
+            ml: 0,
+            "@media(max-width:900px)": {
+              ml: "8%",
+            },
+            "@media(min-width:901px)": {
+              ml: "50%",
+            },
+            "@media (min-width: 600px) and (max-width: 900px)": {
+              ml: "4%",
+              width: "80%",
+            },
+            "@media (min-width: 400px) and (max-width: 500px)": {
+              ml: "15px",
+              width: "80%",
+            },
+          }}>
           <SignUpTextfield
             text={"Enter your Username or Email Address"}
             value={username}
@@ -242,6 +330,14 @@ export default function LoginA() {
                 mt: "12px",
                 fontSize: "11px",
                 mr: "60px",
+
+                "@media (min-width: 700px) and (max-width: 900px)": {
+                  mr: "90px",
+                },
+
+                "@media(min-width:900px)": {
+                  mr: "80px",
+                },
                 color: "#4285F4",
                 cursor: "pointer",
               }}>
@@ -254,13 +350,26 @@ export default function LoginA() {
             sx={{
               display: "flex",
               justifyContent: "flex-end",
+
+              "@media(min-width:900px)": {
+                mr: "20px",
+              },
             }}>
             <Button
               variant="contained"
               sx={{
-                width: "149px",
+                "@media(min-width:901px)": {
+                  width: "236px",
+                  mr: "10%",
+                },
+                "@media(max-width:900px)": {
+                  width: "149px",
+                },
                 height: "54px",
                 mr: "50px",
+                "@media (min-width: 700px) and (max-width: 900px)": {
+                  mr: "90px",
+                },
                 mt: "47px",
                 backgroundColor: "#779341",
                 ":hover": {

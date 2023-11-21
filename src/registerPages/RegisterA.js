@@ -5,13 +5,13 @@ import {
   Typography,
   useMediaQuery,
 } from "@mui/material";
-import { useTheme } from "@mui/material/styles";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { desktopRectangle, mobileRectangle } from "../images";
 import { SignUpTextfield } from "./LoginA";
 
 import axios from "axios";
+import { theme } from "../utils/customThemeBreakpoints";
 import "./LoginA.css";
 
 export default function RegisterA() {
@@ -21,8 +21,7 @@ export default function RegisterA() {
 
   const navigate = useNavigate();
 
-  const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+  const isMobile = useMediaQuery(theme.breakpoints.down("xs"));
 
   const handleRegister = () => {
     console.log(
@@ -63,13 +62,13 @@ export default function RegisterA() {
         <img
           className="image2"
           src={isMobile ? mobileRectangle : desktopRectangle}
-          alt={"A transparent background for mobile view."}
+          alt={"A transparent background."}
         />
         <Grid
           container
           item
           xs={12}
-          sm={12}
+          sm={11}
           md={6}
           lg={5}
           xl={4.5}
@@ -78,7 +77,7 @@ export default function RegisterA() {
             mt: "122px",
             ml: 0,
             "@media(max-width:900px)": {
-              ml: "5%",
+              ml: "8%",
             },
             "@media(min-width:901px)": {
               ml: "50%",
@@ -92,6 +91,10 @@ export default function RegisterA() {
               flexDirection: "column",
               alignItems: "flex-start",
               ml: "6%",
+
+              "@media (min-width: 400px) and (max-width: 500px)": {
+                ml: 0,
+              },
             }}>
             <Typography
               sx={{
@@ -152,7 +155,7 @@ export default function RegisterA() {
           item
           xs={12}
           sm={10}
-          md={6}
+          md={6.5}
           lg={5}
           xl={4.5}
           sx={{
@@ -161,17 +164,23 @@ export default function RegisterA() {
 
             mt: "70%",
 
-            "@media (max-width: 600px)": {
-              mt: "70%",
+            "@media (min-width: 430px) and (max-width: 600px)": {
+              mt: "50%",
             },
-
+            "@media (min-width: 400px) and (max-width: 500px)": {
+              ml: "15px",
+              width: "80%",
+            },
             "@media (min-width: 601px) and (max-width: 900px)": {
               mt: "40%",
               ml: "7%",
             },
-
+            "@media (min-width: 600px) and (max-width: 900px)": {
+              ml: "4%",
+              width: "80%",
+            },
             "@media(min-width: 901px)": {
-              mt: "15%",
+              mt: "25%",
               ml: "50%",
             },
             "@media(min-width: 1200px)": {
@@ -217,6 +226,7 @@ export default function RegisterA() {
               />
             </Grid>
           </Grid>
+
           <Grid item xs={5} mr={"26px"}>
             <SignUpTextfield text={"Contact Number"} mt={"33px"} ml={0} />
           </Grid>
