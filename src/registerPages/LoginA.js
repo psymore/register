@@ -1,34 +1,25 @@
 import {
   Box,
   Button,
-  FormControl,
   Grid,
-  IconButton,
-  InputAdornment,
-  InputLabel,
-  OutlinedInput,
   TextField,
   Typography,
   useMediaQuery,
 } from "@mui/material";
 
+import axios from "axios";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import AlertWarning from "../components/AlertWarning";
+import PasswordField from "../components/PasswordField";
 import {
   LoginFacebook,
   LoginGoogle,
   desktopRectangle,
   mobileRectangle,
 } from "../images";
-import "./LoginA.css";
-import { useNavigate } from "react-router-dom";
-import { useState } from "react";
-import axios from "axios";
 import { theme } from "../utils/customThemeBreakpoints";
-import AlertWarning from "../components/AlertWarning";
-import {
-  Visibility,
-  VisibilityOff,
-  VisibilityOffOutlined,
-} from "@mui/icons-material";
+import "./LoginA.css";
 
 export const SignUpTextfield = ({ text, mt, ml, width, value, onChange }) => {
   return (
@@ -71,10 +62,6 @@ export default function LoginA() {
   const [showPassword, setShowPassword] = useState(false);
 
   const handleClickShowPassword = () => setShowPassword(show => !show);
-
-  const handleMouseDownPassword = event => {
-    event.preventDefault();
-  };
 
   const handleLogin = () => {
     axios
@@ -354,60 +341,13 @@ export default function LoginA() {
             value={username}
             onChange={e => setUsername(e.target.value)}
           />
-          {/* <SignUpTextfield
-            text={"Enter your Password"}
-            mt={"36px"}
-            value={password}
-            onChange={e => setPassword(e.target.value)}
-          /> */}
-          <Grid
-            item
-            xs={12}
-            sx={{
-              ml: "15%",
-              display: "flex",
-              flexDirection: "column",
-              justifyContent: "center",
-              alignItems: "flex-start",
-              mt: "36px",
-            }}>
-            <FormControl
-              sx={{
-                backgroundColor: "white",
-                borderRadius: "9px",
-                mt: "16px",
-                width: "85%",
-                display: "flex",
-                flexDirection: "left",
-              }}
-              variant="outlined">
-              <InputLabel htmlFor="outlined-adornment-password">
-                Password
-              </InputLabel>
-              <OutlinedInput
-                id="outlined-adornment-password"
-                value={password}
-                type={showPassword ? "text" : "password"}
-                onChange={e => setPassword(e.target.value)}
-                endAdornment={
-                  <InputAdornment position="end">
-                    <IconButton
-                      aria-label="toggle password visibility"
-                      onClick={handleClickShowPassword}
-                      onMouseDown={handleMouseDownPassword}
-                      edge="end">
-                      {showPassword ? (
-                        <VisibilityOffOutlined />
-                      ) : (
-                        <Visibility />
-                      )}
-                    </IconButton>
-                  </InputAdornment>
-                }
-                label="Password"
-              />
-            </FormControl>
-          </Grid>
+
+          <PasswordField
+            handleClickShowPassword={handleClickShowPassword}
+            open={open}
+            showPassword={showPassword}
+            setPassword={setPassword}
+          />
 
           <Grid
             item

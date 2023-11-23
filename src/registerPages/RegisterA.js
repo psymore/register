@@ -14,6 +14,7 @@ import axios from "axios";
 import AlertWarning from "../components/AlertWarning";
 import { theme } from "../utils/customThemeBreakpoints";
 import "./LoginA.css";
+import PasswordField from "../components/PasswordField";
 
 export default function RegisterA() {
   const [email, setEmail] = useState("");
@@ -21,6 +22,9 @@ export default function RegisterA() {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const [open, setOpen] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
+
+  const handleClickShowPassword = () => setShowPassword(show => !show);
 
   const navigate = useNavigate();
 
@@ -242,11 +246,11 @@ export default function RegisterA() {
             <SignUpTextfield text={"Contact Number"} mt={"33px"} ml={0} />
           </Grid>
 
-          <SignUpTextfield
-            text={"Enter your Password"}
-            mt={"33px"}
-            value={password}
-            onChange={e => setPassword(e.target.value)}
+          <PasswordField
+            handleClickShowPassword={handleClickShowPassword}
+            open={open}
+            showPassword={showPassword}
+            setPassword={setPassword}
           />
 
           <Grid
