@@ -11,6 +11,7 @@ import { desktopRectangle, mobileRectangle } from "../images";
 import { SignUpTextfield } from "./LoginA";
 
 import axios from "axios";
+import AlertWarning from "../components/AlertWarning";
 import { theme } from "../utils/customThemeBreakpoints";
 import "./LoginA.css";
 
@@ -18,6 +19,8 @@ export default function RegisterA() {
   const [email, setEmail] = useState("");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
+  const [open, setOpen] = useState(false);
 
   const navigate = useNavigate();
 
@@ -41,9 +44,14 @@ export default function RegisterA() {
       })
       .then(response => {
         console.log("Registration successful:", response.data);
+        navigate("/login");
       })
       .catch(error => {
         console.error("Registration failed:", error.response.data);
+        console.error("Registration failed:", error.response.data.message);
+        const errorMessage = error.response.data.message;
+        setError(errorMessage);
+        setOpen(true);
       });
   };
 
@@ -56,6 +64,8 @@ export default function RegisterA() {
         justifyContent: "center",
         alignItems: "center",
       }}>
+      {error && <AlertWarning open={open} setOpen={setOpen} error={error} />}
+
       <Grid
         container // whole components besides background image
       >
@@ -63,6 +73,7 @@ export default function RegisterA() {
           className="image2"
           src={isMobile ? mobileRectangle : desktopRectangle}
           alt={"A transparent background."}
+          style={{ zIndex: 0 }}
         />
         <Grid
           container
@@ -257,6 +268,9 @@ export default function RegisterA() {
 
                 "@media(min-width:900px)": {
                   mr: "80px",
+                },
+                "@media(min-width:1200px)": {
+                  mr: "100px",
                 },
                 color: "#4285F4",
                 cursor: "pointer",
