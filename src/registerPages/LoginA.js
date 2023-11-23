@@ -196,13 +196,22 @@ export default function LoginA() {
 
             "@media(min-width: 901px)": {
               mt: "25%",
-              ml: "50%",
+              ml: "45%",
             },
             "@media(min-width: 1200px)": {
               mt: "20%",
             },
             "@media(min-width: 1400px)": {
+              mt: "16%",
+              ml: "44%",
+            },
+            "@media(min-width: 1500px)": {
+              mt: "14%",
+              ml: "44%",
+            },
+            "@media(min-width: 1700px)": {
               mt: "15%",
+              ml: "43%",
             },
           }}>
           <Grid
@@ -305,6 +314,9 @@ export default function LoginA() {
               ml: "15px",
               width: "80%",
             },
+            "@media(min-width: 1600px)": {
+              mt: "450px",
+            },
           }}>
           <SignUpTextfield
             text={"Enter your Username or Email Address"}
@@ -337,6 +349,9 @@ export default function LoginA() {
 
                 "@media(min-width:900px)": {
                   mr: "80px",
+                },
+                "@media(min-width:1200px)": {
+                  mr: "100px",
                 },
                 color: "#4285F4",
                 cursor: "pointer",
