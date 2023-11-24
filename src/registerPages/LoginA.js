@@ -227,9 +227,13 @@ export default function LoginA() {
               mt: "14%",
               ml: "44%",
             },
-            "@media(min-width: 1700px)": {
-              mt: "15%",
+            "@media(min-width: 1600px)": {
+              mt: "18%",
               ml: "43%",
+            },
+            "@media(min-width: 2100px)": {
+              mt: "10%",
+              ml: "40%",
             },
           }}>
           <Grid

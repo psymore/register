@@ -17,14 +17,7 @@ const theme = createTheme({
     },
   },
 
-  typography: {
-    "@media (min-width:900px)": {
-      fontSize: 13,
-    },
-    "@media (max-width:900px)": {
-      fontSize: 11,
-    },
-  },
+  typography: { fontSize: 13 },
 });
 
 function App() {
