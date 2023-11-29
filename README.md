@@ -1,4 +1,4 @@
-#Implementation of a ReactJS Login and Register pages
+<h1> Implementation of a User Authentication Page(Login and Register pages) with ReactJS </h1>
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
