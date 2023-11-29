@@ -1,6 +1,10 @@
 import {
   Button,
+  FormControl,
   Grid,
+  IconButton,
+  InputAdornment,
+  OutlinedInput,
   TextField,
   Typography,
   useMediaQuery,
@@ -10,6 +14,7 @@ import { useNavigate } from "react-router-dom";
 import { desktopRectangle, mobileRectangle } from "../images";
 import { SignUpTextfield } from "./LoginA";
 
+import { Visibility, VisibilityOffOutlined } from "@mui/icons-material";
 import axios from "axios";
 import AlertWarning from "../components/AlertWarning";
 import { theme } from "../utils/customThemeBreakpoints";
@@ -21,10 +26,17 @@ export default function RegisterA() {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const [open, setOpen] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
 
   const navigate = useNavigate();
 
   const isMobile = useMediaQuery(theme.breakpoints.down("xs"));
+
+  const handleClickShowPassword = () => setShowPassword(show => !show);
+
+  const handleMouseDownPassword = event => {
+    event.preventDefault();
+  };
 
   const handleRegister = () => {
     console.log(
@@ -242,12 +254,53 @@ export default function RegisterA() {
             <SignUpTextfield text={"Contact Number"} mt={"33px"} ml={0} />
           </Grid>
 
-          <SignUpTextfield
-            text={"Enter your Password"}
-            mt={"33px"}
-            value={password}
-            onChange={e => setPassword(e.target.value)}
-          />
+          <Grid
+            item
+            xs={12}
+            sx={{
+              ml: "15%",
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "center",
+              alignItems: "flex-start",
+              mt: "36px",
+            }}>
+            <Typography fontSize={"14px"} color={"#000000"}>
+              Password
+            </Typography>
+            <FormControl
+              sx={{
+                backgroundColor: "white",
+                borderRadius: "9px",
+                mt: "16px",
+                width: "85%",
+                display: "flex",
+                flexDirection: "left",
+              }}
+              variant="outlined">
+              <OutlinedInput
+                id="outlined-adornment-password"
+                value={password}
+                type={showPassword ? "text" : "password"}
+                onChange={e => setPassword(e.target.value)}
+                endAdornment={
+                  <InputAdornment position="end">
+                    <IconButton
+                      aria-label="toggle password visibility"
+                      onClick={handleClickShowPassword}
+                      onMouseDown={handleMouseDownPassword}
+                      edge="end">
+                      {showPassword ? (
+                        <VisibilityOffOutlined />
+                      ) : (
+                        <Visibility />
+                      )}
+                    </IconButton>
+                  </InputAdornment>
+                }
+              />
+            </FormControl>
+          </Grid>
 
           <Grid
             item

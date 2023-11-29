@@ -1,5 +1,4 @@
 import {
-  Box,
   Button,
   FormControl,
   Grid,
@@ -12,23 +11,14 @@ import {
   useMediaQuery,
 } from "@mui/material";
 
-import {
-  LoginFacebook,
-  LoginGoogle,
-  desktopRectangle,
-  mobileRectangle,
-} from "../images";
-import "./LoginA.css";
-import { useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { Visibility, VisibilityOffOutlined } from "@mui/icons-material";
 import axios from "axios";
-import { theme } from "../utils/customThemeBreakpoints";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import AlertWarning from "../components/AlertWarning";
-import {
-  Visibility,
-  VisibilityOff,
-  VisibilityOffOutlined,
-} from "@mui/icons-material";
+import { LoginGoogle, desktopRectangle, mobileRectangle } from "../images";
+import { theme } from "../utils/customThemeBreakpoints";
+import "./LoginA.css";
 
 export const SignUpTextfield = ({ text, mt, ml, width, value, onChange }) => {
   return (
@@ -275,7 +265,7 @@ export default function LoginA() {
             sx={{
               display: "flex",
             }}>
-            <Box
+            {/* <Box
               sx={{
                 width: "36px",
                 height: "55px",
@@ -314,7 +304,7 @@ export default function LoginA() {
                 },
               }}>
               <LoginFacebook />
-            </Box>
+            </Box> */}
           </Grid>
           <Grid item xs={2.5} sx={{}}></Grid>
         </Grid>
@@ -371,6 +361,9 @@ export default function LoginA() {
               alignItems: "flex-start",
               mt: "36px",
             }}>
+            <Typography fontSize={"14px"} color={"#000000"}>
+              Password
+            </Typography>
             <FormControl
               sx={{
                 backgroundColor: "white",
@@ -381,9 +374,6 @@ export default function LoginA() {
                 flexDirection: "left",
               }}
               variant="outlined">
-              <InputLabel htmlFor="outlined-adornment-password">
-                Password
-              </InputLabel>
               <OutlinedInput
                 id="outlined-adornment-password"
                 value={password}
@@ -404,7 +394,6 @@ export default function LoginA() {
                     </IconButton>
                   </InputAdornment>
                 }
-                label="Password"
               />
             </FormControl>
           </Grid>
