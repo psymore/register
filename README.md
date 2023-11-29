@@ -14,6 +14,6 @@ Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 The page will reload when you make changes.\
 You may also see any lint errors in the console.
 
-![LandingFormatted](https://github.com/psymore/register/assets/95416465/fed125c5-305f-4243-a66f-e093364b1806)
-![SignupFormatted](https://github.com/psymore/register/assets/95416465/43b7bd40-5345-4b13-a4b0-8a1f05ea7a53)
-![SigninFormatted](https://github.com/psymore/register/assets/95416465/c0be18a3-2edf-42c3-974e-252a4b911e9c)
+![LandingFormatted](https://github.com/psymore/register/assets/95416465/773d851d-66e0-40bc-971b-f35c9320898b)
+![SignupFormatted](https://github.com/psymore/register/assets/95416465/6dde1edd-9922-4051-bcdc-6e0d03af9ca6)
+![SigninFormatted](https://github.com/psymore/register/assets/95416465/6dcebd3c-c7de-40ae-9620-4e0864814b2c)
