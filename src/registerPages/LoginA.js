@@ -344,12 +344,7 @@ export default function LoginA() {
             value={username}
             onChange={e => setUsername(e.target.value)}
           />
-          {/* <SignUpTextfield
-            text={"Enter your Password"}
-            mt={"36px"}
-            value={password}
-            onChange={e => setPassword(e.target.value)}
-          /> */}
+
           <Grid
             item
             xs={12}
