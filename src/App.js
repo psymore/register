@@ -5,6 +5,7 @@ import LoginA from "./registerPages/LoginA";
 import RegisterA from "./registerPages/RegisterA";
 import Home from "./home/Home";
 import Landing from "./Landing";
+import ProfileSettings from "./Profile/ProfileSettings";
 
 const theme = createTheme({
   components: {
@@ -29,6 +30,7 @@ function App() {
           <Route path="/login" element={<LoginA />}></Route>
           <Route path="/register" element={<RegisterA />}></Route>
           <Route path="/home" element={<Home />}></Route>
+          <Route path="/profile" element={<ProfileSettings />}></Route>
         </Routes>
       </ThemeProvider>
     </div>
