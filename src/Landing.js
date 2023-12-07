@@ -25,7 +25,6 @@ export default function Landing() {
             "&:hover": {
               color: "white",
               backgroundColor: "#d87e7a",
-
               border: "2px solid #d8c0d0",
             },
             "@media(max-width: 900px)": {
